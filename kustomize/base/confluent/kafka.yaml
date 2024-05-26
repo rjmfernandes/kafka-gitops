@@ -3,7 +3,7 @@ kind: Kafka
 metadata:
   name: kafka
 spec:
-  replicas: 3
+  replicas: 1
   image:
     application: confluentinc/cp-server:7.6.0
     init: confluentinc/confluent-init-container:2.8.0
