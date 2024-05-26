@@ -4,5 +4,3 @@ namespace: production
 resources:
   - namespace.yaml
   - ../../base
-  - ../../base/confluent/schema-registry
-  - ../../base/confluent/control-centre.yaml

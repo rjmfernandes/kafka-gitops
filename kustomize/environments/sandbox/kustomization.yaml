@@ -4,4 +4,3 @@ namespace: sandbox
 resources:
   - namespace.yaml
   - ../../base
-  - ../../base/confluent/schema-registry
