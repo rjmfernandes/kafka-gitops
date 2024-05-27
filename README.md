@@ -61,6 +61,12 @@ kubectl -n sandbox port-forward kafka-0 9092:9092
 
 ### Test it out
 
+So first we confirm we are running with 1 replica for ZK and Kafka in both of the environments.
+
+```shell
+k get pods -n sandbox 
+```
+
 Now in another terminal you can list the topics (make sure to map in your /etc/hosts, `kafka-0.kafka.sandbox.svc.cluster.local` to 127.0.0.1):
 
 ```shell
