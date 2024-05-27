@@ -10,6 +10,8 @@ Check the details under original repository: https://github.com/osodevops/kafka-
 
 ## Demo
 
+### Preparation
+
 Once your local kubernetes cluster is running you can execute:
 
 ```shell
@@ -56,6 +58,8 @@ Once both pods for kafka and zookeeper are running and ready you can forward the
 ```shell
 kubectl -n sandbox port-forward kafka-0 9092:9092
 ```
+
+### Test it out
 
 Now in another terminal you can list the topics (make sure to map in your /etc/hosts, `kafka-0.kafka.sandbox.svc.cluster.local` to 127.0.0.1):
 
