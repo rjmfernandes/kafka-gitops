@@ -4,9 +4,53 @@ This project is based on: https://github.com/osodevops/kafka-gitops-examples
 
 A Kafka / Confluent GitOps workflow example for multi-env deployments with Flux, Kustomize, Helm and Confluent Operator
 
+Check the details under original repository: https://github.com/osodevops/kafka-gitops-examples 
+
 ---
 
-## Usage
+## Demo
+
+Once your local kubernetes cluster is running you can execute:
+
+```shell
+cd ./flux-system
+kubectl apply -f gotk-components.yaml
+kubectl apply -f gotk-sync.yaml
+cd ..
+```
+
+It should first deploy Flux which will be monitoring your git repository (configured in `flux-system/gotk-sync.yaml`).
+
+You can check the namespaces:
+
+```shell
+k get namespaces
+```
+
+It will be useful checking the Flux source pod:
+
+```shell
+k get pods -n flux-system
+```
+
+And do the log tail of your source pod with something like this (replace the name of your pod accordingly):
+
+```shell
+k logs -n flux-system -f source-controller-7bbff746cd-glc6h
+```
+
+In another tab you should probably see the CFK operator created under the namespace `confluent` and the two environments `production` and `sandbox`:
+
+```shell
+k get namespaces
+```
+
+You can now check the pods of one your environments:
+
+```shell
+k get pods -n sandbox 
+```
+
 
 For this example we assume a single cluster simulating a production confluent environment. The end goal is to leverage Flux and Kustomize to manage [Confluent Operator for Kubernetes](https://github.com/confluentinc/operator-earlyaccess). You can extend with another cluster while minimizing duplicated declarations.
 
