@@ -116,6 +116,16 @@ kafka-topics --bootstrap-server kafka-0.kafka.sandbox.svc.cluster.local:9092 --l
 
 ## Cleanup
 
+Revert changes to `kustomize/base/confluent/zookeeper.yaml` and commit:
+
+```shell
+git add .
+git commit -m "commiting back"
+git push -u origin main
+```
+
+And remove cluster:
+
 ```shell
 kind delete cluster 
 ```
