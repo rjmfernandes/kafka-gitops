@@ -6,11 +6,26 @@ A Kafka / Confluent GitOps workflow example for multi-env deployments with Flux,
 
 Check the details under original repository: https://github.com/osodevops/kafka-gitops-examples 
 
----
+- [Kafka GitOps Example](#kafka-gitops-example)
+  - [Disclaimer](#disclaimer)
+  - [Setup Cluster](#setup-cluster)
+  - [Preparation](#preparation)
+  - [Test it out](#test-it-out)
+  - [Cleanup](#cleanup)
 
-## Demo
 
-### Preparation
+## Disclaimer
+
+The code and/or instructions here available are **NOT** intended for production usage. 
+It's only meant to serve as an example or reference and does not replace the need to follow actual and official documentation of referenced products.
+
+## Setup Cluster
+
+```shell
+kind create cluster
+```
+
+## Preparation
 
 Once your local kubernetes cluster is running you can execute:
 
@@ -59,7 +74,7 @@ Once both pods for kafka and zookeeper are running and ready you can forward the
 kubectl -n sandbox port-forward kafka-0 9092:9092
 ```
 
-### Test it out
+## Test it out
 
 So first we confirm we are running with 1 replica for ZK and Kafka in both of the environments.
 
@@ -97,4 +112,10 @@ Once all new 3 ZK replicas are ready we can run again:
 
 ```shell
 kafka-topics --bootstrap-server kafka-0.kafka.sandbox.svc.cluster.local:9092 --list
+```
+
+## Cleanup
+
+```shell
+kind delete cluster 
 ```
